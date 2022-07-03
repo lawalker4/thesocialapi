@@ -2,7 +2,7 @@ const { create } = require('domain');
 const { Schema, model, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const ReplySchema = new Schema(
+const ReactionSchema = new Schema(
     {
         // set custom id to avoid confusion with parent comment
         reactionId: {
@@ -50,7 +50,7 @@ const ThoughtSchema = new Schema(
             required: true,
         },
         reactions:
-            [reactionSchema]
+            [ReactionSchema]
     },
     {
         toJSON: {
