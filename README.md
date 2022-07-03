@@ -35,7 +35,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 ---
 
 ### Installation
-[REPO]()
+[REPO](https://github.com/lawalker4/thesocialapi/tree/develop)
 
 [Express.js](https://expressjs.com/en/starter/installing.html)
 
@@ -47,11 +47,20 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 ### Usage
 
+To run application take the following steps:
 
+-Clone repo to your computer.
+-Open terminal and run npm i
+-Run npm start
+-Open new live server and type in localhost:3001 in Insomnia
+-Go through the different folders and to run Put, Post and Delete option
 
 ---
 
 ### Screenshot
+
+:movie_camera:	
+[Demo Video]()
 
 ![Screenshot](./images/Screenshot.PNG)
 
