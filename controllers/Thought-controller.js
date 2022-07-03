@@ -58,8 +58,37 @@ const thoughtController = {
     Thought.findOneAndUpdate({ _id: params.id })
       .then(dbThoughtData => res.json(dbThoughtData))
       .catch(err => res.json(err));
-  }
+  },
 
+  // add users reaction
+  addReaction({ params }, res) {
+    Thought.findOneAndUpdate(
+      { _id: params.thoughtid },
+      { $push: { friends: body } },
+      { new: true, runValidators: true }
+    )
+    .then(dbThoughtData => {
+      if (!dbThoughtData) {
+        res.status(404).json({ message: 'No thought found' });
+        return;
+      }
+      res.json(dbUserData);
+    })
+
+     .catch(err => res.json(err));
+  },
+
+  //remove a reacation
+  deleteReaction({ params }, res) {
+    Thought.findOneAndUpdate(
+        { _id: params.thoughtid },
+        { $pull: { reaction: {reaction: params.reactionId}} },
+        { new: true },
+      )
+      .then(dbThoughtData => 
+        res.json(dbThoughtData))
+        .catch(err => res.json(err));
+  },
 };
 
 module.exports = thoughtController;
