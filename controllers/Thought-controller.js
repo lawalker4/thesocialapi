@@ -2,8 +2,8 @@ const { Thought, User } = require('../models');
 
 const thoughtController = {
   //get all user infomation
-  getAllUser(req, res) {
-    User.find({})
+  getAllThought(req, res) {
+    Thought.find({})
       .populate({
         path: 'comments',
         select: '-__v'
@@ -19,7 +19,7 @@ const thoughtController = {
 
   // get one user by id
   getThoughtById({ params }, res) {
-    User.findOne({ _id: params.id })
+    Thought.findOne({ _id: params.id })
       .populate({
         path: 'comments',
         select: '-__v'
@@ -72,7 +72,7 @@ const thoughtController = {
         res.status(404).json({ message: 'No thought found' });
         return;
       }
-      res.json(dbUserData);
+      res.json(dbThoughtData);
     })
 
      .catch(err => res.json(err));
