@@ -28,13 +28,14 @@ const ReactionSchema = new Schema(
     {
         toJSON: {
             getters: true
-        }
+        },
+        id:false
     }
 );
 
-const ThoughtSchema = new Schema(
+const ThoughtsSchema = new Schema(
     {
-        ThoughtText: {
+        thoughtText: {
             type: String,
             required: true,
             maxlength: 280,
@@ -61,10 +62,10 @@ const ThoughtSchema = new Schema(
     }
 );
 
-ThoughtSchema.virtual('reactionCount').get(function () {
+ThoughtsSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });
 
-const Thought = model('Thought', ThoughtSchema);
+const Thoughts = model('Thoughts', ThoughtsSchema);
 
-module.exports = Thought;
+module.exports = Thoughts;

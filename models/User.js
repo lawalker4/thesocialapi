@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+
 const UserSchema = new Schema(
     {
         username: {
@@ -14,16 +15,16 @@ const UserSchema = new Schema(
             unique: true,
             match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
         },
-        thought: [
+        thoughts: [
             {
                 type: Schema.Types.ObjectId,
-                ref: "Thought"
+                ref: "Thoughts"
             },
         ],
         friends: [
             {
                 type: Schema.Types.ObjectId,
-                ref: "Thought"
+                ref: "User"
             },
         ],
     },
@@ -38,8 +39,8 @@ const UserSchema = new Schema(
 
 
 // get total count of comments and replies on retrieval
-UserSchema.virtual('friendCount').get(function () {
-    return this.friend.length;
+UserSchema.virtual('friendCount').get(function() {
+    return this.friends.length;
 }
 );
 
