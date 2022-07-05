@@ -5,7 +5,7 @@ const thoughtController = {
   getAllThoughts(req, res) {
     Thought.find({})
       .populate({
-        path: 'comments',
+        path: 'reactions',
         select: '-__v'
       })
       .select('-__v')
@@ -80,9 +80,9 @@ const thoughtController = {
   },
 
   // add users reaction
-  addReaction({ params }, res) {
+  addReaction({ params, body }, res) {
     Thought.findOneAndUpdate(
-      { _id: params.thoughtid },
+      { _id: params.thoughtId },
       { $push: { friends: body } },
       { new: true, runValidators: true })
       .populate({
